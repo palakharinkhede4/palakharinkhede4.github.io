@@ -270,22 +270,28 @@ function initContactForm() {
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
         const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
 
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+        const name = nameInput ? nameInput.value : '';
+        const email = emailInput ? emailInput.value : '';
+        const message = messageInput ? messageInput.value : '';
+
+        const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+        const body = encodeURIComponent(`Hi Palak,\n\nMy name is ${name} (${email}).\n\nMessage:\n${message}`);
+
+        submitBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Opening Mail Client...';
+        submitBtn.style.background = '#10b981';
 
         setTimeout(() => {
-            submitBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Message Sent!';
-            submitBtn.style.background = '#10b981';
+            window.location.href = `mailto:palakharinkhede1@gmail.com?subject=${subject}&body=${body}`;
             form.reset();
-
             setTimeout(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
+                submitBtn.innerHTML = '<i class="fa-solid fa-rocket"></i> Launch Message';
                 submitBtn.style.background = '';
             }, 3000);
-        }, 1200);
+        }, 600);
     });
 }
