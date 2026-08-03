@@ -650,6 +650,27 @@ body.light-theme .icon-light { display: block; }
     font-weight: 600;
 }
 
+.badge-deployed-link {
+    font-size: 0.82rem;
+    color: var(--emerald-accent);
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all var(--transition-fast);
+}
+
+.badge-deployed-link:hover {
+    background: var(--emerald-accent);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
 .project-icon-link {
     color: var(--text-muted);
     font-size: 1.2rem;
