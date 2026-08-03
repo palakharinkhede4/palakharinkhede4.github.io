@@ -381,20 +381,19 @@ body.light-theme .icon-light { display: block; }
     max-width: 900px;
 }
 
-.hero-main-title {
-    font-size: clamp(3rem, 6.5vw, 5.2rem);
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
-    margin-bottom: 12px;
-    text-transform: uppercase;
+.hero-title-clean {
+    font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 10px;
 }
 
-.hero-sub-title {
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
-    font-weight: 700;
+.hero-subtitle-clean {
+    font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+    font-weight: 600;
     color: var(--hero-sub-color, #ffffff);
-    margin-bottom: 8px;
+    margin-bottom: 24px;
 }
 
 .hero-tagline {
@@ -1014,9 +1013,56 @@ body.light-theme .icon-light { display: block; }
     gap: 12px;
 }
 
+/* Technical Skills Resume Matrix */
+.skills-grid-resume {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+}
+
+.skill-group-card {
+    padding: 32px;
+}
+
+.skill-group-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--purple-main);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-card);
+    padding-bottom: 12px;
+}
+
+.skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-pill {
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-card);
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+.skill-pill:hover {
+    border-color: var(--purple-main);
+    color: var(--purple-main);
+    transform: translateY(-2px);
+    box-shadow: 0 0 12px var(--purple-glow);
+}
+
 /* Responsive */
 @media (max-width: 992px) {
-    .projects-grid, .about-wrapper, .tech-stack-grid, .connect-wrapper, .edu-grid {
+    .projects-grid, .about-wrapper, .tech-stack-grid, .connect-wrapper, .edu-grid, .skills-grid-resume {
         grid-template-columns: 1fr;
     }
     .timeline::before { left: 20px; }

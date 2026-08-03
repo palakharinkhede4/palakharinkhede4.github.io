@@ -16,8 +16,8 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Custom CSS (v1.0.4) -->
-    <link rel="stylesheet" href="styles.css?v=1.0.4">
+    <!-- Custom CSS (v1.0.5) -->
+    <link rel="stylesheet" href="styles.css?v=1.0.5">
 </head>
 <body class="dark-theme">
     <!-- Animated Constellation Canvas Background -->
@@ -27,7 +27,7 @@
     <header class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#hero" class="logo">
-                Palak Harinkhede
+                <!-- Clean navigation without top-left name text -->
             </a>
             
             <nav class="nav-menu" id="nav-menu">
@@ -55,12 +55,12 @@
         <!-- Hero Section (Matches example_portfolio.mp4) -->
         <section class="hero" id="hero">
             <div class="container hero-container">
-                <h1 class="hero-main-title gradient-text title-glow">
-                    PALAK HARINKHEDE
+                <h1 class="hero-title-clean gradient-text title-glow">
+                    Palak Harinkhede
                 </h1>
                 
-                <h2 class="hero-sub-title">
-                    Welcome to My Portfolio
+                <h2 class="hero-subtitle-clean">
+                    AI Engineer & Multi-Agent Systems Specialist
                 </h2>
 
                 <p class="hero-tagline">
@@ -327,112 +327,96 @@
             </div>
         </section>
 
-        <!-- Tech Stack Progress Bars Section (Matches example_portfolio.mp4) -->
+        <!-- Comprehensive Technical Skills Section (Extracted from Resume) -->
         <section class="section techstack" id="techstack">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title gradient-text">Tech Stack</h2>
-                    <p class="section-subtitle">Technologies and tools I use to build intelligent systems</p>
+                    <h2 class="section-title gradient-text">Technical Skills</h2>
+                    <p class="section-subtitle">Full competencies, frameworks, tools, and algorithms pulled from resume</p>
                 </div>
 
-                <div class="tech-stack-grid">
-                    <!-- Programming Languages -->
-                    <div class="tech-category-card glass-card">
-                        <h3>Programming Languages</h3>
-                        
-                        <div class="skill-bar-item">
-                            <div class="skill-info">
-                                <span class="skill-name"><i class="fa-brands fa-python"></i> Python</span>
-                                <span class="skill-percent">95%</span>
-                            </div>
-                            <div class="progress-line"><span style="width: 95%"></span></div>
-                        </div>
-
-                        <div class="skill-bar-item">
-                            <div class="skill-info">
-                                <span class="skill-name"><i class="fa-solid fa-code"></i> C++</span>
-                                <span class="skill-percent">88%</span>
-                            </div>
-                            <div class="progress-line"><span style="width: 88%"></span></div>
-                        </div>
-
-                        <div class="skill-bar-item">
-                            <div class="skill-info">
-                                <span class="skill-name"><i class="fa-solid fa-database"></i> SQL / SQLite</span>
-                                <span class="skill-percent">90%</span>
-                            </div>
-                            <div class="progress-line"><span style="width: 90%"></span></div>
+                <div class="skills-grid-resume">
+                    <!-- 1. Generative AI & LLMs -->
+                    <div class="skill-group-card glass-card">
+                        <h3><i class="fa-solid fa-robot"></i> Generative AI & LLMs</h3>
+                        <div class="skill-pills">
+                            <span class="skill-pill">Large Language Models (LLMs)</span>
+                            <span class="skill-pill">Agentic AI</span>
+                            <span class="skill-pill">Multi-Agent Systems</span>
+                            <span class="skill-pill">Retrieval-Augmented Generation (RAG)</span>
+                            <span class="skill-pill">Prompt Engineering</span>
+                            <span class="skill-pill">Function Calling</span>
+                            <span class="skill-pill">NLP</span>
+                            <span class="skill-pill">Multimodal AI</span>
+                            <span class="skill-pill">Model Fine-Tuning</span>
+                            <span class="skill-pill">AI Agent Orchestration</span>
                         </div>
                     </div>
 
-                    <!-- AI/ML Frameworks -->
-                    <div class="tech-category-card glass-card">
-                        <h3>AI / ML Frameworks</h3>
-                        
-                        <div class="skill-bar-item">
-                            <div class="skill-info">
-                                <span class="skill-name"><i class="fa-solid fa-fire"></i> PyTorch</span>
-                                <span class="skill-percent">92%</span>
-                            </div>
-                            <div class="progress-line"><span style="width: 92%"></span></div>
-                        </div>
-
-                        <div class="skill-bar-item">
-                            <div class="skill-info">
-                                <span class="skill-name"><i class="fa-solid fa-layer-group"></i> TensorFlow</span>
-                                <span class="skill-percent">88%</span>
-                            </div>
-                            <div class="progress-line"><span style="width: 88%"></span></div>
-                        </div>
-
-                        <div class="skill-bar-item">
-                            <div class="skill-info">
-                                <span class="skill-name"><i class="fa-solid fa-robot"></i> Hugging Face / LLMs</span>
-                                <span class="skill-percent">94%</span>
-                            </div>
-                            <div class="progress-line"><span style="width: 94%"></span></div>
+                    <!-- 2. Retrieval & Vector Search -->
+                    <div class="skill-group-card glass-card">
+                        <h3><i class="fa-solid fa-magnifying-glass"></i> Retrieval & Vector Search</h3>
+                        <div class="skill-pills">
+                            <span class="skill-pill">FAISS</span>
+                            <span class="skill-pill">Semantic Search</span>
+                            <span class="skill-pill">Vector Databases (FAISS)</span>
+                            <span class="skill-pill">Vector Search</span>
+                            <span class="skill-pill">Query Expansion</span>
+                            <span class="skill-pill">Information Retrieval</span>
+                            <span class="skill-pill">RAG Pipelines</span>
+                            <span class="skill-pill">Vector Indexing</span>
+                            <span class="skill-pill">Sentence Transformers</span>
                         </div>
                     </div>
 
-                    <!-- Data & Retrieval -->
-                    <div class="tech-category-card glass-card">
-                        <h3>Data & Vector Retrieval</h3>
-                        
-                        <div class="skill-bar-item">
-                            <div class="skill-info">
-                                <span class="skill-name"><i class="fa-solid fa-magnifying-glass"></i> FAISS & Vector Indexing</span>
-                                <span class="skill-percent">93%</span>
-                            </div>
-                            <div class="progress-line"><span style="width: 93%"></span></div>
-                        </div>
-
-                        <div class="skill-bar-item">
-                            <div class="skill-info">
-                                <span class="skill-name"><i class="fa-solid fa-table"></i> Pandas & NumPy</span>
-                                <span class="skill-percent">95%</span>
-                            </div>
-                            <div class="progress-line"><span style="width: 95%"></span></div>
+                    <!-- 3. Machine Learning & Computer Vision -->
+                    <div class="skill-group-card glass-card">
+                        <h3><i class="fa-solid fa-brain"></i> Machine Learning & Computer Vision</h3>
+                        <div class="skill-pills">
+                            <span class="skill-pill">Machine Learning</span>
+                            <span class="skill-pill">Deep Learning</span>
+                            <span class="skill-pill">Time-Series Forecasting</span>
+                            <span class="skill-pill">Anomaly Detection</span>
+                            <span class="skill-pill">Predictive Analytics</span>
+                            <span class="skill-pill">Computer Vision</span>
+                            <span class="skill-pill">CNNs</span>
+                            <span class="skill-pill">Image Classification</span>
+                            <span class="skill-pill">Object Detection (YOLO)</span>
+                            <span class="skill-pill">Operational Analytics</span>
                         </div>
                     </div>
 
-                    <!-- Tools & Platforms -->
-                    <div class="tech-category-card glass-card">
-                        <h3>Tools & Platforms</h3>
-                        
-                        <div class="skill-bar-item">
-                            <div class="skill-info">
-                                <span class="skill-name"><i class="fa-solid fa-display"></i> Streamlit</span>
-                                <span class="skill-percent">92%</span>
-                            </div>
-                            <div class="progress-line"><span style="width: 92%"></span></div>
+                    <!-- 4. Frameworks & Libraries -->
+                    <div class="skill-group-card glass-card">
+                        <h3><i class="fa-solid fa-layer-group"></i> Frameworks & Libraries</h3>
+                        <div class="skill-pills">
+                            <span class="skill-pill">PyTorch</span>
+                            <span class="skill-pill">TensorFlow</span>
+                            <span class="skill-pill">Scikit-learn</span>
+                            <span class="skill-pill">XGBoost</span>
+                            <span class="skill-pill">CatBoost</span>
+                            <span class="skill-pill">OpenCV</span>
+                            <span class="skill-pill">Pandas</span>
+                            <span class="skill-pill">NumPy</span>
+                            <span class="skill-pill">Hugging Face Transformers</span>
                         </div>
+                    </div>
 
-                        <div class="skill-bar-item">
-                            <div class="skill-info">
-                                <span class="skill-name"><i class="fa-brands fa-git-alt"></i> Git & GitHub</span>
-                                <span class="skill-percent">90%</span>
-                            </div>
-                            <div class="progress-line"><span style="width: 90%"></span></div>
+                    <!-- 5. Languages, Tools & Core CS -->
+                    <div class="skill-group-card glass-card">
+                        <h3><i class="fa-solid fa-code"></i> Languages, Tools & Core CS</h3>
+                        <div class="skill-pills">
+                            <span class="skill-pill">Python</span>
+                            <span class="skill-pill">C++</span>
+                            <span class="skill-pill">Streamlit</span>
+                            <span class="skill-pill">Git & GitHub</span>
+                            <span class="skill-pill">Linux</span>
+                            <span class="skill-pill">Data Structures & Algorithms</span>
+                            <span class="skill-pill">OOP</span>
+                            <span class="skill-pill">Operating Systems</span>
+                            <span class="skill-pill">DBMS</span>
+                            <span class="skill-pill">System Design</span>
+                            <span class="skill-pill">Scalable AI Systems</span>
                         </div>
                     </div>
                 </div>
