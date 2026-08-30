@@ -3,48 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palak Harinkhede | AI Engineer Portfolio</title>
-    <meta name="description" content="Portfolio of Palak Harinkhede - AI Engineer specializing in LLMs, Agentic AI Systems, RAG, and Machine Learning.">
-    <meta name="keywords" content="Palak Harinkhede, AI Engineer, Machine Learning, LLMs, Agentic AI, RAG, PyTorch, FAISS">
+    <title>Palak Harinkhede | AI Engineer • Data Scientist • Software Engineer</title>
+    <meta name="description" content="Portfolio of Palak Harinkhede - AI Engineer, Data Scientist, and Backend/Software Engineer specializing in LLMs, Agentic AI, Predictive ML, and Scalable Systems.">
+    <meta name="keywords" content="Palak Harinkhede, AI Engineer, Data Scientist, Software Engineer, SDE, Machine Learning, LLMs, Agentic AI, RAG, PyTorch, FAISS, Python, C++, Backend">
     <meta name="author" content="Palak Harinkhede">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:title" content="Palak Harinkhede | AI Engineer • Data Scientist • Software Engineer">
+    <meta property="og:description" content="Portfolio of Palak Harinkhede - AI Engineer, Data Scientist & Backend Systems Specialist. M.Tech CSE @ DTU.">
+    <meta property="og:type" content="website">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Custom CSS (v1.0.5) -->
-    <link rel="stylesheet" href="styles.css?v=1.0.5">
+    <!-- Custom CSS (v2.3) -->
+    <link rel="stylesheet" href="styles.css?v=2.3.0">
 </head>
 <body class="dark-theme">
-    <!-- Animated Constellation Canvas Background -->
-    <canvas id="bg-canvas"></canvas>
+    <!-- Top Scroll Progress Bar -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Ambient Subtle Background Canvas -->
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
     <!-- Navigation Header -->
     <header class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#hero" class="logo">
-                <!-- Clean navigation without top-left name text -->
+            <a href="#hero" class="nav-brand" aria-label="Palak Harinkhede">
+                <span class="brand-name">Palak Harinkhede</span>
             </a>
             
-            <nav class="nav-menu" id="nav-menu">
-                <a href="#about" class="nav-link">About Me</a>
-                <a href="#projects" class="nav-link">Featured Projects</a>
+            <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
                 <a href="#experience" class="nav-link">Experience</a>
                 <a href="#techstack" class="nav-link">Tech Stack</a>
                 <a href="#education" class="nav-link">Education</a>
-                <a href="#contact" class="nav-link btn-contact">Connect</a>
+                <a href="#contact" class="nav-link btn-nav-connect">
+                    <i class="fa-solid fa-envelope"></i> Connect
+                </a>
             </nav>
 
             <div class="nav-actions">
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+                <!-- Theme Toggle -->
+                <button class="action-btn theme-toggle" id="theme-toggle" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
                     <i class="fa-solid fa-moon icon-dark"></i>
                     <i class="fa-solid fa-sun icon-light"></i>
                 </button>
-                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Navigation Menu">
+
+                <!-- Mobile Menu Button -->
+                <button class="action-btn mobile-toggle" id="mobile-toggle" aria-label="Open Navigation Menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -52,268 +65,424 @@
     </header>
 
     <main>
-        <!-- Hero Section (Matches example_portfolio.mp4) -->
+        <!-- Hero Section: Multi-Dimensional AI, Data Science & SDE Overview -->
         <section class="hero" id="hero">
-            <div class="container hero-container">
-                <h1 class="hero-title-clean gradient-text title-glow">
-                    Palak Harinkhede
-                </h1>
-                
-                <h2 class="hero-subtitle-clean">
-                    AI Engineer & Multi-Agent Systems Specialist
-                </h2>
-
-                <p class="hero-tagline">
-                    LLMs • Agentic AI Workflows • RAG Systems • Machine Learning
-                </p>
-
-                <div class="hero-icon-badges">
-                    <div class="icon-badge-glow" title="Large Language Models & RAG">
-                        <i class="fa-solid fa-robot"></i>
+            <div class="container hero-grid">
+                <!-- Left Column: Main Introduction -->
+                <div class="hero-content">
+                    <div class="hero-status-badge">
+                        <span class="status-dot"></span>
+                        <span>AI Engineer • Data Scientist • Backend / SDE</span>
+                        <span class="badge-divider">•</span>
+                        <span>M.Tech CSE @ DTU</span>
                     </div>
-                    <div class="icon-badge-glow" title="Multi-Agent Systems & Vector Search">
-                        <i class="fa-solid fa-network-wired"></i>
+
+                    <h1 class="hero-title gradient-text">
+                        Palak Harinkhede
+                    </h1>
+                    
+                    <h2 class="hero-role">
+                        AI Engineer, Data Scientist & Backend Systems Specialist
+                    </h2>
+
+                    <p class="hero-tagline">
+                        Architecting production LLM & Agentic AI applications, predictive data science models, and high-throughput backend services with PyTorch, FAISS, and modern software engineering practices.
+                    </p>
+
+                    <div class="hero-key-badges">
+                        <span class="badge-chip"><i class="fa-solid fa-robot"></i> Agentic AI & LLMs</span>
+                        <span class="badge-chip"><i class="fa-solid fa-chart-line"></i> Data Science & ML</span>
+                        <span class="badge-chip"><i class="fa-solid fa-server"></i> Backend & Systems</span>
+                        <span class="badge-chip"><i class="fa-solid fa-database"></i> Vector Search (FAISS)</span>
+                        <span class="badge-chip"><i class="fa-solid fa-code"></i> Python • C++ • Next.js</span>
+                    </div>
+
+                    <div class="hero-cta-group">
+                        <a href="#projects" class="btn btn-primary btn-glow">
+                            <i class="fa-solid fa-arrow-down"></i> Explore Projects
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fa-solid fa-paper-plane"></i> Contact Me
+                        </a>
                     </div>
                 </div>
 
-                <div class="hero-pill">
-                    AI Engineer @ STMicroelectronics
-                </div>
+                <!-- Right Column: Interactive Quick Highlights Spotlight Card -->
+                <div class="hero-visual">
+                    <div class="hero-highlight-card glass-card spotlight-card">
+                        <div class="highlight-card-header">
+                            <div class="card-header-text">
+                                <h3>Quick Highlights</h3>
+                                <p>Specialization & Technical Breadth</p>
+                            </div>
+                        </div>
 
-                <p class="hero-blue-tag">
-                    Enterprise RAG Pipelines • Vector Search (FAISS) • Function Calling • PyTorch • Deep Learning
-                </p>
+                        <div class="highlight-items-list">
+                            <div class="highlight-item">
+                                <div class="item-icon"><i class="fa-solid fa-robot"></i></div>
+                                <div class="item-content">
+                                    <span class="item-title">AI & Agentic Systems</span>
+                                    <span class="item-desc">Multi-Agent Workflows, Production LLMs & Function Calling</span>
+                                </div>
+                            </div>
 
-                <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">
-                        <i class="fa-solid fa-rocket"></i> Explore Projects
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <i class="fa-solid fa-paper-plane"></i> Contact Me
-                    </a>
+                            <div class="highlight-item">
+                                <div class="item-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                                <div class="item-content">
+                                    <span class="item-title">Data Science & Analytics</span>
+                                    <span class="item-desc">Time-Series Forecasting (Prophet), Anomaly Detection & XGBoost</span>
+                                </div>
+                            </div>
+
+                            <div class="highlight-item">
+                                <div class="item-icon"><i class="fa-solid fa-server"></i></div>
+                                <div class="item-content">
+                                    <span class="item-title">Software & Backend (SDE)</span>
+                                    <span class="item-desc">Scalable REST APIs, System Design, C++, Python & Next.js</span>
+                                </div>
+                            </div>
+
+                            <div class="highlight-item">
+                                <div class="item-icon"><i class="fa-solid fa-database"></i></div>
+                                <div class="item-content">
+                                    <span class="item-title">Retrieval & Databases</span>
+                                    <span class="item-desc">Enterprise RAG Pipelines, FAISS Vector Indexing & SQL/DBMS</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-card-footer">
+                            <a href="#about" class="learn-more-link">
+                                More about my background <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Me Section (Matches example_portfolio.mp4 layout & quote) -->
+        <!-- About Me Section -->
         <section class="section about" id="about">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header text-center">
                     <h2 class="section-title gradient-text">About Me</h2>
+                    <p class="section-subtitle">Bridging theoretical computer science with production-ready AI systems, data science & backend engineering</p>
                 </div>
 
-                <div class="about-wrapper">
-                    <div class="about-avatar-container">
-                        <div class="avatar-ring">
-                            <div class="avatar-img">
-                                <img src="profile.jpg" alt="Palak Harinkhede" class="avatar-photo">
+                <div class="about-grid">
+                    <div class="about-avatar-col">
+                        <div class="avatar-card glass-card spotlight-card">
+                            <div class="avatar-ring-glow">
+                                <img src="profile.jpg" alt="Palak Harinkhede - AI Engineer" class="avatar-img">
+                            </div>
+                            <div class="avatar-badges">
+                                <div class="avatar-status-pill">
+                                    <span class="status-live-dot"></span> M.Tech CSE @ DTU (2024–2026)
+                                </div>
+                                <div class="avatar-tag">
+                                    AI Project Trainee @ STMicroelectronics
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="about-content">
-                        <h3>AI Engineer (M.Tech CSE @ DTU) specializing in Agentic AI & RAG Systems</h3>
-                        <p class="about-text">
-                            I specialize in architecting Production LLM Applications, Retrieval-Augmented Generation (RAG) pipelines, and Multi-Agent Workflows that automate complex enterprise decision-making. My expertise covers vector search (FAISS), function calling, fine-tuning, time-series forecasting, and computer vision.
-                        </p>
+                    <div class="about-info-col">
+                        <div class="about-card glass-card spotlight-card">
+                            <h3 class="about-headline">
+                                Engineering <span class="gradient-text">Intelligent AI Models, Data Science & Scalable Backends</span>
+                            </h3>
+                            <p class="about-description">
+                                I am an AI Engineer and Software Developer with a strong theoretical and practical computer science foundation from Delhi Technological University (DTU). My experience spans designing multi-agent AI systems and RAG pipelines, conducting predictive data science on industrial datasets at STMicroelectronics, and developing scalable backend architectures and full-stack tools.
+                            </p>
 
-                        <div class="about-highlights">
-                            <div class="highlight-box">
-                                <i class="fa-solid fa-diagram-project"></i>
-                                <span>Multi-Agent AI</span>
+                            <div class="about-metrics-grid">
+                                <div class="metric-card glass-card">
+                                    <div class="metric-icon"><i class="fa-solid fa-robot"></i></div>
+                                    <div class="metric-data">
+                                        <h4>AI & Agentic Systems</h4>
+                                        <p>Multi-Agent Workflows, RAG & Function Calling</p>
+                                    </div>
+                                </div>
+                                <div class="metric-card glass-card">
+                                    <div class="metric-icon"><i class="fa-solid fa-chart-line"></i></div>
+                                    <div class="metric-data">
+                                        <h4>Data Science & ML</h4>
+                                        <p>Time-Series (Prophet), XGBoost & Anomaly Detection</p>
+                                    </div>
+                                </div>
+                                <div class="metric-card glass-card">
+                                    <div class="metric-icon"><i class="fa-solid fa-server"></i></div>
+                                    <div class="metric-data">
+                                        <h4>Backend & SDE</h4>
+                                        <p>Scalable APIs, System Design, DSA & Clean Code</p>
+                                    </div>
+                                </div>
+                                <div class="metric-card glass-card">
+                                    <div class="metric-icon"><i class="fa-solid fa-database"></i></div>
+                                    <div class="metric-data">
+                                        <h4>Vector DBs & Search</h4>
+                                        <p>FAISS Indexing, Semantic Search & SQL/DBMS</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="highlight-box">
-                                <i class="fa-solid fa-database"></i>
-                                <span>RAG & Vector DBs</span>
-                            </div>
-                            <div class="highlight-box">
-                                <i class="fa-solid fa-brain"></i>
-                                <span>LLMs & PyTorch</span>
+
+                            <div class="about-quote-box">
+                                <i class="fa-solid fa-quote-left quote-icon"></i>
+                                <p class="quote-text">
+                                    "Committed to engineering high-performance software, robust data models, and autonomous AI systems that deliver measurable impact."
+                                </p>
                             </div>
                         </div>
-
-                        <p class="about-quote">
-                            "Engineering the future with Agentic AI, neural networks, and scalable pipelines."
-                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Featured Projects Section (Matches 3-card grid in example_portfolio.mp4) -->
+        <!-- Featured Projects Section with Interactive Filter Tabs & Spotlight Cards -->
         <section class="section projects" id="projects">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header text-center">
                     <h2 class="section-title gradient-text">Featured Projects</h2>
-                    <p class="section-subtitle">Interactive gallery showcasing AI/ML projects that push the boundaries of what's possible</p>
+                    <p class="section-subtitle">Showcase spanning Agentic AI, Data Science & Predictive Analytics, Full-Stack SDE, and Computer Vision</p>
+                </div>
+
+                <!-- Project Category Filters -->
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fa-solid fa-border-all"></i> All Projects
+                    </button>
+                    <button class="filter-btn" data-filter="ai-agents">
+                        <i class="fa-solid fa-robot"></i> AI & Agents
+                    </button>
+                    <button class="filter-btn" data-filter="data-science">
+                        <i class="fa-solid fa-chart-line"></i> Data Science & ML
+                    </button>
+                    <button class="filter-btn" data-filter="backend-sde">
+                        <i class="fa-solid fa-server"></i> Backend & SDE
+                    </button>
+                    <button class="filter-btn" data-filter="rag-search">
+                        <i class="fa-solid fa-database"></i> RAG & Search
+                    </button>
                 </div>
 
                 <div class="projects-grid">
                     <!-- Project 1: Voice Finance Buddy -->
-                    <div class="project-card glass-card">
-                        <div class="project-top-icon">
-                            <i class="fa-solid fa-microphone"></i>
-                        </div>
-                        <h3>Voice Finance Buddy</h3>
-                        <p>Multi-Agent Financial Assistant featuring Speech-to-Text (Whisper), GPT-4 intent routing, and sub-3s interaction latency.</p>
-                        <div class="tech-pills">
-                            <span class="pill">Python</span>
-                            <span class="pill">GPT-4</span>
-                            <span class="pill">Whisper</span>
-                            <span class="pill">RAG</span>
-                            <span class="pill">FAISS</span>
-                            <span class="pill">Vercel</span>
-                        </div>
-                        <div class="project-card-actions">
-                            <a href="https://voice-finance-buddy.vercel.app/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
-                                Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                            <a href="https://github.com/palakharinkhede4/Voice-Finance-Buddy" target="_blank" rel="noopener" class="btn btn-sm btn-secondary">
-                                <i class="fa-brands fa-github"></i>
-                            </a>
+                    <div class="project-card glass-card spotlight-card" data-category="ai-agents backend-sde">
+                        <div class="project-card-inner">
+                            <div class="project-header">
+                                <div class="project-icon-box">
+                                    <i class="fa-solid fa-microphone"></i>
+                                </div>
+                                <div class="project-meta-badge">Agentic AI & Backend</div>
+                            </div>
+                            <h3 class="project-title">Voice Finance Buddy</h3>
+                            <p class="project-desc">
+                                Multi-Agent Voice-Enabled Financial Assistant featuring Whisper Speech-to-Text, GPT-4 intent routing, and low-latency API backend with sub-3s response times.
+                            </p>
+                            <div class="tech-pills">
+                                <span class="pill">Python</span>
+                                <span class="pill">GPT-4</span>
+                                <span class="pill">Whisper</span>
+                                <span class="pill">RAG</span>
+                                <span class="pill">FAISS</span>
+                                <span class="pill">FastAPI</span>
+                                <span class="pill">Vercel</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://voice-finance-buddy.vercel.app/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                                    Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="https://github.com/palakharinkhede4/Voice-Finance-Buddy" target="_blank" rel="noopener" class="btn btn-sm btn-secondary" title="GitHub Repository">
+                                    <i class="fa-brands fa-github"></i> Code
+                                </a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Project 2: DocQuery AI -->
-                    <div class="project-card glass-card">
-                        <div class="project-top-icon">
-                            <i class="fa-solid fa-file-contract"></i>
-                        </div>
-                        <h3>DocQuery AI</h3>
-                        <p>Enterprise Document Intelligence RAG system built with Sentence Transformers, local LLMs (TinyLlama), and FAISS indexing.</p>
-                        <div class="tech-pills">
-                            <span class="pill">Python</span>
-                            <span class="pill">FAISS</span>
-                            <span class="pill">Sentence Transformers</span>
-                            <span class="pill">TinyLlama</span>
-                            <span class="pill">Vercel</span>
-                        </div>
-                        <div class="project-card-actions">
-                            <a href="https://doc-query-ai-pi.vercel.app/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
-                                Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                            <a href="https://github.com/palakharinkhede4/Local-RAG-System-for-Technical-Document-QnA" target="_blank" rel="noopener" class="btn btn-sm btn-secondary">
-                                <i class="fa-brands fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project 3: AI Inventory Forecasting -->
-                    <div class="project-card glass-card">
-                        <div class="project-top-icon">
-                            <i class="fa-solid fa-chart-pie"></i>
-                        </div>
-                        <h3>AI Demand Forecasting</h3>
-                        <p>Supply chain forecasting platform built with Prophet time-series prediction, EOQ, and Reorder Point (ROP) optimization.</p>
-                        <div class="tech-pills">
-                            <span class="pill">Python</span>
-                            <span class="pill">Prophet</span>
-                            <span class="pill">Pandas</span>
-                            <span class="pill">NumPy</span>
-                            <span class="pill">Vercel</span>
-                        </div>
-                        <div class="project-card-actions">
-                            <a href="https://ai-powered-inventory-demand-forecas.vercel.app/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
-                                Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                            <a href="https://github.com/palakharinkhede4/AI-Powered-Inventory-Demand-Forecasting-System" target="_blank" rel="noopener" class="btn btn-sm btn-secondary">
-                                <i class="fa-brands fa-github"></i>
-                            </a>
+                    <div class="project-card glass-card spotlight-card" data-category="rag-search ai-agents backend-sde">
+                        <div class="project-card-inner">
+                            <div class="project-header">
+                                <div class="project-icon-box">
+                                    <i class="fa-solid fa-file-contract"></i>
+                                </div>
+                                <div class="project-meta-badge">Enterprise RAG</div>
+                            </div>
+                            <h3 class="project-title">DocQuery AI</h3>
+                            <p class="project-desc">
+                                Enterprise Document Intelligence RAG system with Sentence Transformers, local LLM inference (TinyLlama), and high-throughput FAISS vector search.
+                            </p>
+                            <div class="tech-pills">
+                                <span class="pill">Python</span>
+                                <span class="pill">FAISS</span>
+                                <span class="pill">Sentence Transformers</span>
+                                <span class="pill">TinyLlama</span>
+                                <span class="pill">FastAPI</span>
+                                <span class="pill">Vercel</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://doc-query-ai-pi.vercel.app/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                                    Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="https://github.com/palakharinkhede4/Local-RAG-System-for-Technical-Document-QnA" target="_blank" rel="noopener" class="btn btn-sm btn-secondary" title="GitHub Repository">
+                                    <i class="fa-brands fa-github"></i> Code
+                                </a>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Project 4: SnippetVault (4th Place) -->
-                    <div class="project-card glass-card">
-                        <div class="project-top-icon">
-                            <i class="fa-solid fa-code"></i>
+                    <!-- Project 3: AI Demand Forecasting -->
+                    <div class="project-card glass-card spotlight-card" data-category="data-science">
+                        <div class="project-card-inner">
+                            <div class="project-header">
+                                <div class="project-icon-box">
+                                    <i class="fa-solid fa-chart-pie"></i>
+                                </div>
+                                <div class="project-meta-badge">Data Science & ML</div>
+                            </div>
+                            <h3 class="project-title">AI Demand Forecasting</h3>
+                            <p class="project-desc">
+                                Supply chain predictive analytics platform built with Prophet time-series prediction, Economic Order Quantity (EOQ), and Reorder Point (ROP) optimization.
+                            </p>
+                            <div class="tech-pills">
+                                <span class="pill">Python</span>
+                                <span class="pill">Prophet</span>
+                                <span class="pill">Pandas</span>
+                                <span class="pill">NumPy</span>
+                                <span class="pill">Time-Series</span>
+                                <span class="pill">Vercel</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://ai-powered-inventory-demand-forecas.vercel.app/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                                    Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="https://github.com/palakharinkhede4/AI-Powered-Inventory-Demand-Forecasting-System" target="_blank" rel="noopener" class="btn btn-sm btn-secondary" title="GitHub Repository">
+                                    <i class="fa-brands fa-github"></i> Code
+                                </a>
+                            </div>
                         </div>
-                        <h3>SnippetVault</h3>
-                        <p>Full-stack developer code snippet manager for storing, tagging, and instantly searching reusable code snippets.</p>
-                        <div class="tech-pills">
-                            <span class="pill">Next.js</span>
-                            <span class="pill">TypeScript</span>
-                            <span class="pill">TailwindCSS</span>
-                            <span class="pill">Vercel</span>
-                        </div>
-                        <div class="project-card-actions">
-                            <a href="https://snippetvault-ivory.vercel.app/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
-                                Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                            <a href="https://github.com/palakharinkhede4/snippetvault" target="_blank" rel="noopener" class="btn btn-sm btn-secondary" title="GitHub Repository">
-                                <i class="fa-brands fa-github"></i>
-                            </a>
+                    </div>
+
+                    <!-- Project 4: SnippetVault -->
+                    <div class="project-card glass-card spotlight-card" data-category="backend-sde">
+                        <div class="project-card-inner">
+                            <div class="project-header">
+                                <div class="project-icon-box">
+                                    <i class="fa-solid fa-code"></i>
+                                </div>
+                                <div class="project-meta-badge">Full-Stack & SDE</div>
+                            </div>
+                            <h3 class="project-title">SnippetVault</h3>
+                            <p class="project-desc">
+                                Full-stack developer code snippet manager for storing, tagging, and instantly searching reusable engineering code snippets with type-safe backend APIs.
+                            </p>
+                            <div class="tech-pills">
+                                <span class="pill">Next.js</span>
+                                <span class="pill">TypeScript</span>
+                                <span class="pill">REST API</span>
+                                <span class="pill">TailwindCSS</span>
+                                <span class="pill">Vercel</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://snippetvault-ivory.vercel.app/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                                    Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="https://github.com/palakharinkhede4/snippetvault" target="_blank" rel="noopener" class="btn btn-sm btn-secondary" title="GitHub Repository">
+                                    <i class="fa-brands fa-github"></i> Code
+                                </a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Project 5: MoodBeat AI -->
-                    <div class="project-card glass-card">
-                        <div class="project-top-icon">
-                            <i class="fa-solid fa-icons"></i>
-                        </div>
-                        <h3>MoodBeat AI</h3>
-                        <p>Emotion-Aware Music Recommendation engine powered by CNN facial affect recognition from webcam video feeds.</p>
-                        <div class="tech-pills">
-                            <span class="pill">Python</span>
-                            <span class="pill">CNN</span>
-                            <span class="pill">OpenCV</span>
-                            <span class="pill">TensorFlow</span>
-                        </div>
-                        <div class="project-card-actions">
-                            <a href="https://music-recommendation-using-sentimen-nu.vercel.app/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
-                                Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                            <a href="https://github.com/palakharinkhede4/Music-Recommendation-Using-Sentiment-Analysis" target="_blank" rel="noopener" class="btn btn-sm btn-secondary">
-                                <i class="fa-brands fa-github"></i>
-                            </a>
+                    <div class="project-card glass-card spotlight-card" data-category="ai-agents data-science">
+                        <div class="project-card-inner">
+                            <div class="project-header">
+                                <div class="project-icon-box">
+                                    <i class="fa-solid fa-music"></i>
+                                </div>
+                                <div class="project-meta-badge">Deep Learning & CV</div>
+                            </div>
+                            <h3 class="project-title">MoodBeat AI</h3>
+                            <p class="project-desc">
+                                Emotion-Aware Music Recommendation engine powered by CNN facial affect recognition from real-time webcam video feeds with sentiment classification.
+                            </p>
+                            <div class="tech-pills">
+                                <span class="pill">Python</span>
+                                <span class="pill">CNN</span>
+                                <span class="pill">OpenCV</span>
+                                <span class="pill">TensorFlow</span>
+                                <span class="pill">NumPy</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://music-recommendation-using-sentimen-nu.vercel.app/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                                    Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="https://github.com/palakharinkhede4/Music-Recommendation-Using-Sentiment-Analysis" target="_blank" rel="noopener" class="btn btn-sm btn-secondary" title="GitHub Repository">
+                                    <i class="fa-brands fa-github"></i> Code
+                                </a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Project 6: Road Pothole Detection -->
-                    <div class="project-card glass-card">
-                        <div class="project-top-icon">
-                            <i class="fa-solid fa-road"></i>
-                        </div>
-                        <h3>Pothole Detection System</h3>
-                        <p>Real-time road defect identification using YOLOv4 computer vision for automated infrastructure inspection.</p>
-                        <div class="tech-pills">
-                            <span class="pill">Python</span>
-                            <span class="pill">YOLOv4</span>
-                            <span class="pill">OpenCV</span>
-                            <span class="pill">TensorFlow</span>
-                        </div>
-                        <div class="project-card-actions">
-                            <a href="https://github.com/palakharinkhede4/Road-Pothole-Detection" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
-                                GitHub Repo <i class="fa-brands fa-github"></i>
-                            </a>
-                            <button class="btn btn-sm btn-secondary open-modal" data-target="modal-pothole">
-                                Details
-                            </button>
+                    <div class="project-card glass-card spotlight-card" data-category="data-science">
+                        <div class="project-card-inner">
+                            <div class="project-header">
+                                <div class="project-icon-box">
+                                    <i class="fa-solid fa-road"></i>
+                                </div>
+                                <div class="project-meta-badge">Computer Vision & ML</div>
+                            </div>
+                            <h3 class="project-title">Pothole Detection System</h3>
+                            <p class="project-desc">
+                                Real-time road defect identification using YOLOv4 computer vision for automated infrastructure inspection with batch inference pipelines.
+                            </p>
+                            <div class="tech-pills">
+                                <span class="pill">Python</span>
+                                <span class="pill">YOLOv4</span>
+                                <span class="pill">OpenCV</span>
+                                <span class="pill">TensorFlow</span>
+                                <span class="pill">Batch Inference</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://github.com/palakharinkhede4/Road-Pothole-Detection" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                                    GitHub Repo <i class="fa-brands fa-github"></i>
+                                </a>
+                                <button class="btn btn-sm btn-secondary open-modal" data-target="modal-pothole">
+                                    Details <i class="fa-solid fa-circle-info"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Timeline Section (Matches center-line timeline in example_portfolio.mp4) -->
+        <!-- Experience Timeline Section -->
         <section class="section experience" id="experience">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header text-center">
                     <h2 class="section-title gradient-text">Experience Timeline</h2>
-                    <p class="section-subtitle">My journey in data science, artificial intelligence, and software engineering</p>
+                    <p class="section-subtitle">Practical engineering across Data Science, Predictive Machine Learning, and Agentic AI Systems</p>
                 </div>
 
                 <div class="timeline">
-                    <!-- First 6 Months: Predictive Analytics -->
+                    <!-- Phase 1: Data Science & Predictive Analytics -->
                     <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card glass-card">
-                            <h3 class="timeline-role">AI Project Trainee</h3>
-                            <div class="timeline-company">STMicroelectronics, Noida • Predictive Modeling & Anomaly Detection</div>
-                            <span class="timeline-date">Jul 2025 – Dec 2025 (6 Months)</span>
+                        <div class="timeline-dot">
+                            <span class="dot-inner"></span>
+                        </div>
+                        <div class="timeline-card glass-card spotlight-card">
+                            <div class="timeline-badge">Jul 2025 – Dec 2025 (6 Months)</div>
+                            <h3 class="timeline-role">AI Project Trainee • Data Science & Predictive Modeling</h3>
+                            <div class="timeline-company">
+                                <i class="fa-solid fa-building"></i> STMicroelectronics, Noida
+                            </div>
 
-                            <ul>
-                                <li>Developed industrial machine learning pipelines using Random Forest, XGBoost, and CatBoost for predictive analytics and anomaly detection on high-dimensional manufacturing datasets.</li>
-                                <li>Engineered feature extraction, automated time-series forecasting, hyperparameter tuning, and real-time inference monitoring workflows.</li>
+                            <ul class="timeline-points">
+                                <li>Developed end-to-end industrial machine learning and data science pipelines using Random Forest, XGBoost, and CatBoost for anomaly detection on high-dimensional manufacturing datasets.</li>
+                                <li>Engineered automated feature extraction, statistical time-series forecasting, hyperparameter optimization, and real-time inference monitoring dashboards.</li>
                             </ul>
                             <div class="tech-pills">
                                 <span class="pill">Python</span>
@@ -321,21 +490,27 @@
                                 <span class="pill">XGBoost</span>
                                 <span class="pill">CatBoost</span>
                                 <span class="pill">Time-Series</span>
+                                <span class="pill">Pandas</span>
+                                <span class="pill">Scikit-learn</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Next 6 Months: Multi-Agent PLM Automation -->
+                    <!-- Phase 2: Agentic AI & Backend Automation Workflows -->
                     <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card glass-card">
-                            <h3 class="timeline-role">AI Project Trainee</h3>
-                            <div class="timeline-company">STMicroelectronics, Noida • Agentic AI Workflows for PLM Automation</div>
-                            <span class="timeline-date">Jan 2026 – Jul 2026 (6 Months)</span>
+                        <div class="timeline-dot">
+                            <span class="dot-inner"></span>
+                        </div>
+                        <div class="timeline-card glass-card spotlight-card">
+                            <div class="timeline-badge">Jan 2026 – Jul 2026 (6 Months)</div>
+                            <h3 class="timeline-role">AI Project Trainee • Multi-Agent Systems & Backend Automation</h3>
+                            <div class="timeline-company">
+                                <i class="fa-solid fa-building"></i> STMicroelectronics, Noida
+                            </div>
 
-                            <ul>
-                                <li>Designed and developed multi-agent AI workflows for Product Lifecycle Management (PLM) automation using LLMs, function calling, and intelligent task routing.</li>
-                                <li>Built retrieval (RAG), reasoning, and structured data processing pipelines integrating enterprise knowledge sources and semantic search.</li>
+                            <ul class="timeline-points">
+                                <li>Designed and deployed multi-agent AI workflows and backend automation pipelines using LLMs, function calling, structured task routing, and asynchronous processing.</li>
+                                <li>Built high-throughput retrieval (RAG) and reasoning pipelines integrating enterprise knowledge sources with FAISS vector search.</li>
                             </ul>
                             <div class="tech-pills">
                                 <span class="pill">Python</span>
@@ -343,6 +518,7 @@
                                 <span class="pill">Agentic AI Workflows</span>
                                 <span class="pill">Function Calling</span>
                                 <span class="pill">RAG & FAISS</span>
+                                <span class="pill">REST APIs</span>
                             </div>
                         </div>
                     </div>
@@ -350,18 +526,32 @@
             </div>
         </section>
 
-        <!-- Comprehensive Technical Skills Section (Extracted from Resume) -->
+        <!-- Technical Skills Section with Multi-Domain Grouping & Live Search -->
         <section class="section techstack" id="techstack">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header text-center">
                     <h2 class="section-title gradient-text">Technical Skills</h2>
-                    <p class="section-subtitle">Full competencies, frameworks, tools, and algorithms pulled from resume</p>
+                    <p class="section-subtitle">Comprehensive competencies across AI Engineering, Data Science, Backend & Software Development</p>
                 </div>
 
-                <div class="skills-grid-resume">
+                <!-- Skill Search Input -->
+                <div class="skill-search-wrapper">
+                    <div class="skill-search-box glass-card">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="skill-search-input" placeholder="Search skills (e.g. PyTorch, XGBoost, FastAPI, FAISS, C++, Next.js)..." aria-label="Search skills">
+                        <button class="clear-search-btn" id="clear-search-btn" title="Clear search">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="skills-grid-resume" id="skills-grid">
                     <!-- 1. Generative AI & LLMs -->
-                    <div class="skill-group-card glass-card">
-                        <h3><i class="fa-solid fa-robot"></i> Generative AI & LLMs</h3>
+                    <div class="skill-group-card glass-card spotlight-card" data-category="genai">
+                        <div class="skill-group-header">
+                            <div class="skill-icon-glow"><i class="fa-solid fa-robot"></i></div>
+                            <h3>Generative AI & LLM Systems</h3>
+                        </div>
                         <div class="skill-pills">
                             <span class="skill-pill">Large Language Models (LLMs)</span>
                             <span class="skill-pill">Agentic AI</span>
@@ -370,76 +560,90 @@
                             <span class="skill-pill">Prompt Engineering</span>
                             <span class="skill-pill">Function Calling</span>
                             <span class="skill-pill">NLP</span>
-                            <span class="skill-pill">Multimodal AI</span>
                             <span class="skill-pill">Model Fine-Tuning</span>
                             <span class="skill-pill">AI Agent Orchestration</span>
+                            <span class="skill-pill">Hugging Face</span>
                         </div>
                     </div>
 
-                    <!-- 2. Retrieval & Vector Search -->
-                    <div class="skill-group-card glass-card">
-                        <h3><i class="fa-solid fa-magnifying-glass"></i> Retrieval & Vector Search</h3>
-                        <div class="skill-pills">
-                            <span class="skill-pill">FAISS</span>
-                            <span class="skill-pill">Semantic Search</span>
-                            <span class="skill-pill">Vector Databases (FAISS)</span>
-                            <span class="skill-pill">Vector Search</span>
-                            <span class="skill-pill">Query Expansion</span>
-                            <span class="skill-pill">Information Retrieval</span>
-                            <span class="skill-pill">RAG Pipelines</span>
-                            <span class="skill-pill">Vector Indexing</span>
-                            <span class="skill-pill">Sentence Transformers</span>
+                    <!-- 2. Data Science & Machine Learning -->
+                    <div class="skill-group-card glass-card spotlight-card" data-category="ml-cv">
+                        <div class="skill-group-header">
+                            <div class="skill-icon-glow"><i class="fa-solid fa-chart-line"></i></div>
+                            <h3>Data Science & Predictive ML</h3>
                         </div>
-                    </div>
-
-                    <!-- 3. Machine Learning & Computer Vision -->
-                    <div class="skill-group-card glass-card">
-                        <h3><i class="fa-solid fa-brain"></i> Machine Learning & Computer Vision</h3>
                         <div class="skill-pills">
                             <span class="skill-pill">Machine Learning</span>
                             <span class="skill-pill">Deep Learning</span>
                             <span class="skill-pill">Time-Series Forecasting</span>
                             <span class="skill-pill">Anomaly Detection</span>
                             <span class="skill-pill">Predictive Analytics</span>
-                            <span class="skill-pill">Computer Vision</span>
-                            <span class="skill-pill">CNNs</span>
-                            <span class="skill-pill">Image Classification</span>
-                            <span class="skill-pill">Object Detection (YOLO)</span>
-                            <span class="skill-pill">Operational Analytics</span>
-                        </div>
-                    </div>
-
-                    <!-- 4. Frameworks & Libraries -->
-                    <div class="skill-group-card glass-card">
-                        <h3><i class="fa-solid fa-layer-group"></i> Frameworks & Libraries</h3>
-                        <div class="skill-pills">
-                            <span class="skill-pill">PyTorch</span>
-                            <span class="skill-pill">TensorFlow</span>
-                            <span class="skill-pill">Scikit-learn</span>
                             <span class="skill-pill">XGBoost</span>
                             <span class="skill-pill">CatBoost</span>
-                            <span class="skill-pill">OpenCV</span>
+                            <span class="skill-pill">Random Forest</span>
+                            <span class="skill-pill">Feature Engineering</span>
+                            <span class="skill-pill">Statistical Analysis</span>
                             <span class="skill-pill">Pandas</span>
                             <span class="skill-pill">NumPy</span>
-                            <span class="skill-pill">Hugging Face Transformers</span>
                         </div>
                     </div>
 
-                    <!-- 5. Languages, Tools & Core CS -->
-                    <div class="skill-group-card glass-card">
-                        <h3><i class="fa-solid fa-code"></i> Languages, Tools & Core CS</h3>
+                    <!-- 3. Backend & Software Engineering (SDE) -->
+                    <div class="skill-group-card glass-card spotlight-card" data-category="backend-sde">
+                        <div class="skill-group-header">
+                            <div class="skill-icon-glow"><i class="fa-solid fa-server"></i></div>
+                            <h3>Backend & Software Engineering</h3>
+                        </div>
+                        <div class="skill-pills">
+                            <span class="skill-pill">RESTful APIs</span>
+                            <span class="skill-pill">FastAPI / Flask</span>
+                            <span class="skill-pill">System Design</span>
+                            <span class="skill-pill">Data Structures & Algorithms</span>
+                            <span class="skill-pill">Object-Oriented Programming (OOP)</span>
+                            <span class="skill-pill">Next.js & TypeScript</span>
+                            <span class="skill-pill">Microservices Architecture</span>
+                            <span class="skill-pill">Asynchronous Programming</span>
+                            <span class="skill-pill">Git & GitHub</span>
+                            <span class="skill-pill">Linux</span>
+                        </div>
+                    </div>
+
+                    <!-- 4. Retrieval & Vector Databases -->
+                    <div class="skill-group-card glass-card spotlight-card" data-category="retrieval">
+                        <div class="skill-group-header">
+                            <div class="skill-icon-glow"><i class="fa-solid fa-database"></i></div>
+                            <h3>Retrieval & Vector Databases</h3>
+                        </div>
+                        <div class="skill-pills">
+                            <span class="skill-pill">FAISS</span>
+                            <span class="skill-pill">Semantic Search</span>
+                            <span class="skill-pill">Vector Databases (FAISS)</span>
+                            <span class="skill-pill">Vector Indexing</span>
+                            <span class="skill-pill">Query Expansion</span>
+                            <span class="skill-pill">Information Retrieval</span>
+                            <span class="skill-pill">RAG Pipelines</span>
+                            <span class="skill-pill">Sentence Transformers</span>
+                            <span class="skill-pill">DBMS & SQL</span>
+                        </div>
+                    </div>
+
+                    <!-- 5. Frameworks, Languages & Computer Vision -->
+                    <div class="skill-group-card glass-card spotlight-card" data-category="frameworks-languages">
+                        <div class="skill-group-header">
+                            <div class="skill-icon-glow"><i class="fa-solid fa-code"></i></div>
+                            <h3>Languages, Frameworks & CV</h3>
+                        </div>
                         <div class="skill-pills">
                             <span class="skill-pill">Python</span>
                             <span class="skill-pill">C++</span>
+                            <span class="skill-pill">PyTorch</span>
+                            <span class="skill-pill">TensorFlow</span>
+                            <span class="skill-pill">Scikit-learn</span>
+                            <span class="skill-pill">Computer Vision</span>
+                            <span class="skill-pill">OpenCV</span>
+                            <span class="skill-pill">YOLO (Object Detection)</span>
+                            <span class="skill-pill">CNNs</span>
                             <span class="skill-pill">Streamlit</span>
-                            <span class="skill-pill">Git & GitHub</span>
-                            <span class="skill-pill">Linux</span>
-                            <span class="skill-pill">Data Structures & Algorithms</span>
-                            <span class="skill-pill">OOP</span>
-                            <span class="skill-pill">Operating Systems</span>
-                            <span class="skill-pill">DBMS</span>
-                            <span class="skill-pill">System Design</span>
-                            <span class="skill-pill">Scalable AI Systems</span>
                         </div>
                     </div>
                 </div>
@@ -449,81 +653,114 @@
         <!-- Education Section -->
         <section class="section education" id="education">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title gradient-text">Education & Credentials</h2>
+                <div class="section-header text-center">
+                    <h2 class="section-title gradient-text">Education & Degrees</h2>
+                    <p class="section-subtitle">Rigorous grounding in Computer Science, Machine Learning & Software Architecture</p>
                 </div>
 
                 <div class="edu-grid">
-                    <div class="edu-card glass-card">
-                        <div class="edu-year">2024 – 2026</div>
+                    <div class="edu-card glass-card spotlight-card">
+                        <div class="edu-card-top">
+                            <div class="edu-badge">2024 – 2026</div>
+                            <div class="edu-grade-pill"><i class="fa-solid fa-star"></i> CGPA: 8.5 / 10</div>
+                        </div>
                         <h3 class="edu-title">M.Tech in Computer Science Engineering</h3>
-                        <p class="edu-school">Delhi Technological University (DTU)</p>
-                        <div class="edu-grade"><i class="fa-solid fa-star"></i> CGPA: 8.5 / 10</div>
+                        <p class="edu-school"><i class="fa-solid fa-landmark"></i> Delhi Technological University (DTU)</p>
+                        <p class="edu-desc">Focus on Advanced Algorithms, Machine Learning Architectures, Neural Networks, Distributed Systems & System Design.</p>
                     </div>
 
-                    <div class="edu-card glass-card">
-                        <div class="edu-year">2018 – 2022</div>
+                    <div class="edu-card glass-card spotlight-card">
+                        <div class="edu-card-top">
+                            <div class="edu-badge">2018 – 2022</div>
+                            <div class="edu-grade-pill"><i class="fa-solid fa-star"></i> CGPA: 8.85 / 10</div>
+                        </div>
                         <h3 class="edu-title">B.E. in Computer Science Engineering</h3>
-                        <p class="edu-school">Sinhgad College of Engineering, Pune</p>
-                        <div class="edu-grade"><i class="fa-solid fa-star"></i> CGPA: 8.85 / 10 (Honours in AI & ML)</div>
+                        <p class="edu-school"><i class="fa-solid fa-landmark"></i> Sinhgad College of Engineering, Pune</p>
+                        <p class="edu-desc">Honours in Artificial Intelligence & Machine Learning. Strong foundation in Data Structures, OOP, DBMS, and Software Engineering.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Let's Connect Section (Matches mascot bot & pill buttons in example_portfolio.mp4) -->
+        <!-- Let's Connect Section: Clean, Interactive Contact Cards -->
         <section class="section contact" id="contact">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header text-center">
                     <h2 class="section-title gradient-text">Let's Connect</h2>
-                    <p class="section-subtitle">Ready to collaborate on the next big AI innovation? Let's build something amazing together.</p>
+                    <p class="section-subtitle">Ready to collaborate on high-impact AI Engineering, Data Science, and Backend / SDE opportunities</p>
                 </div>
 
-                <div class="connect-wrapper">
-                    <!-- Form Side -->
-                    <div class="contact-form-card glass-card">
-                        <h3><i class="fa-solid fa-paper-plane"></i> Send a Message</h3>
-                        <form id="contact-form">
-                            <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <input type="text" id="name" required placeholder="John Doe">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Your Email</label>
-                                <input type="email" id="email" required placeholder="john@example.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Your Message</label>
-                                <textarea id="message" rows="4" required placeholder="Hi Palak, I'd love to connect regarding an AI opportunity..."></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">
-                                <i class="fa-solid fa-rocket"></i> Launch Message
-                            </button>
-                        </form>
+                <div class="contact-cards-container">
+                    <div class="contact-card-intro glass-card spotlight-card">
+                        <div class="connect-status-wrapper">
+                            <span class="status-live-dot"></span>
+                            <span class="connect-status-text">Available for AI Engineer, Data Scientist & Backend / Software Engineer roles</span>
+                        </div>
+                        <p class="connect-lead-text">
+                            Whether you are recruiting for AI/LLM engineering, data science & predictive modeling, or scalable backend/SDE positions, feel free to reach out directly through any channel below:
+                        </p>
                     </div>
 
-                    <!-- Mascot Side -->
-                    <div class="connect-right">
-                        <div class="mascot-avatar">
-                            <i class="fa-solid fa-robot"></i>
-                        </div>
+                    <div class="contact-channels-grid">
+                        <!-- Email Card -->
+                        <a href="mailto:palakharinkhede1@gmail.com" class="channel-card glass-card spotlight-card">
+                            <div class="channel-icon-box">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="channel-details">
+                                <span class="channel-type">Email</span>
+                                <span class="channel-value">palakharinkhede1@gmail.com</span>
+                            </div>
+                            <div class="channel-action">
+                                <span>Write Email</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </div>
+                        </a>
 
-                        <p class="connect-subtitle">"Ready to process your ideas into reality!"</p>
+                        <!-- LinkedIn Card -->
+                        <a href="https://www.linkedin.com/in/palakharinkhede/" target="_blank" rel="noopener" class="channel-card glass-card spotlight-card">
+                            <div class="channel-icon-box">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </div>
+                            <div class="channel-details">
+                                <span class="channel-type">LinkedIn</span>
+                                <span class="channel-value">linkedin.com/in/palakharinkhede</span>
+                            </div>
+                            <div class="channel-action">
+                                <span>Connect</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </div>
+                        </a>
 
-                        <div class="connect-links-stack">
-                            <a href="mailto:palakharinkhede1@gmail.com" class="connect-pill-btn">
-                                <i class="fa-solid fa-envelope"></i> palakharinkhede1@gmail.com
-                            </a>
-                            <a href="tel:9673494515" class="connect-pill-btn">
-                                <i class="fa-solid fa-phone"></i> +91 9673494515
-                            </a>
-                            <a href="https://github.com/palakharinkhede4" target="_blank" rel="noopener" class="connect-pill-btn">
-                                <i class="fa-brands fa-github"></i> GitHub Profile
-                            </a>
-                            <a href="https://www.linkedin.com/in/palakharinkhede/" target="_blank" rel="noopener" class="connect-pill-btn">
-                                <i class="fa-brands fa-linkedin-in"></i> LinkedIn Profile
-                            </a>
-                        </div>
+                        <!-- GitHub Card -->
+                        <a href="https://github.com/palakharinkhede4" target="_blank" rel="noopener" class="channel-card glass-card spotlight-card">
+                            <div class="channel-icon-box">
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+                            <div class="channel-details">
+                                <span class="channel-type">GitHub</span>
+                                <span class="channel-value">github.com/palakharinkhede4</span>
+                            </div>
+                            <div class="channel-action">
+                                <span>View Repos</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </div>
+                        </a>
+
+                        <!-- Phone Card -->
+                        <a href="tel:9673494515" class="channel-card glass-card spotlight-card">
+                            <div class="channel-icon-box">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div class="channel-details">
+                                <span class="channel-type">Phone</span>
+                                <span class="channel-value">+91 9673494515</span>
+                            </div>
+                            <div class="channel-action">
+                                <span>Direct Call</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -532,28 +769,40 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Palak Harinkhede. Engineering the Future with AI.</p>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">Palak Harinkhede</div>
+                <p>&copy; 2026 Palak Harinkhede • AI Engineer, Data Scientist & Software Engineer Portfolio.</p>
+            </div>
+            <div class="footer-right">
+                <a href="#hero" class="back-to-top-btn" title="Back to top">
+                    <i class="fa-solid fa-chevron-up"></i> Top
+                </a>
+            </div>
         </div>
     </footer>
 
     <!-- Project Details Modals -->
-    <div class="modal" id="modal-pothole">
+    <div class="modal" id="modal-pothole" role="dialog" aria-modal="true" aria-labelledby="modal-pothole-title">
         <div class="modal-content glass-card">
-            <button class="modal-close">&times;</button>
-            <h2>Road Pothole Detection System</h2>
-            <p>Real-time road defect identification using YOLOv4 for automated pothole detection in video streams and images.</p>
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <h2 id="modal-pothole-title">Road Pothole Detection System</h2>
+            <p>Real-time road defect identification using YOLOv4 for automated pothole detection in video streams and high-resolution camera images.</p>
             <div class="modal-body">
                 <ul>
                     <li>Built data preprocessing, model training, and low-latency inference pipelines for rapid road condition inspection.</li>
+                    <li>Integrated bounding box confidence thresholds and batch processing for dashcam video feeds.</li>
                 </ul>
             </div>
             <div class="modal-actions">
-                <a href="https://github.com/palakharinkhede4/Road-Pothole-Detection" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-brands fa-github"></i> View Repository</a>
+                <a href="https://github.com/palakharinkhede4/Road-Pothole-Detection" target="_blank" rel="noopener" class="btn btn-primary">
+                    <i class="fa-brands fa-github"></i> View Repository
+                </a>
             </div>
         </div>
     </div>
 
-    <script src="script.js?v=1.0.7"></script>
+    <!-- Custom Script (v2.3) -->
+    <script src="script.js?v=2.3.0"></script>
 </body>
 </html>

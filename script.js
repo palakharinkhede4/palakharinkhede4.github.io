@@ -1,23 +1,40 @@
 /* ==========================================================================
-   PALAK HARINKHEDE - PORTFOLIO INTERACTIVITY SCRIPT
+   PALAK HARINKHEDE - PORTFOLIO INTERACTIVITY SCRIPT (v2.2)
+   Interactive Spotlight Cards, 3D Tilt, Live Search, and Smooth Theme Toggle
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+    initScrollProgress();
     initTheme();
     initNavbar();
-    initCanvasAnimation();
+    initAmbientBgCanvas();
+    initCardSpotlightAndTilt();
+    initSkillSearch();
     initProjectFilters();
     initModals();
-    initCopyAction();
-    initContactForm();
 });
 
 /* ----------------------------------------------------
-   1. Dark / Light Theme Handler
+   1. Scroll Progress Bar
+---------------------------------------------------- */
+function initScrollProgress() {
+    const progressBar = document.getElementById('scroll-progress');
+    if (!progressBar) return;
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = `${scrollPercent}%`;
+    }, { passive: true });
+}
+
+/* ----------------------------------------------------
+   2. Dark / Light Theme Handler
 ---------------------------------------------------- */
 function initTheme() {
     const themeToggleBtn = document.getElementById('theme-toggle');
-    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    const savedTheme = localStorage.getItem('palak-portfolio-theme') || 'dark';
 
     if (savedTheme === 'light') {
         document.body.classList.remove('dark-theme');
@@ -27,21 +44,23 @@ function initTheme() {
         document.body.classList.add('dark-theme');
     }
 
-    themeToggleBtn.addEventListener('click', () => {
-        if (document.body.classList.contains('dark-theme')) {
-            document.body.classList.remove('dark-theme');
-            document.body.classList.add('light-theme');
-            localStorage.setItem('portfolio-theme', 'light');
-        } else {
-            document.body.classList.remove('light-theme');
-            document.body.classList.add('dark-theme');
-            localStorage.setItem('portfolio-theme', 'dark');
-        }
-    });
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.body.classList.contains('dark-theme')) {
+                document.body.classList.remove('dark-theme');
+                document.body.classList.add('light-theme');
+                localStorage.setItem('palak-portfolio-theme', 'light');
+            } else {
+                document.body.classList.remove('light-theme');
+                document.body.classList.add('dark-theme');
+                localStorage.setItem('palak-portfolio-theme', 'dark');
+            }
+        });
+    }
 }
 
 /* ----------------------------------------------------
-   2. Navbar & Mobile Menu Navigation
+   3. Navbar & Mobile Menu Navigation
 ---------------------------------------------------- */
 function initNavbar() {
     const navbar = document.getElementById('navbar');
@@ -50,41 +69,38 @@ function initNavbar() {
     const navLinks = document.querySelectorAll('.nav-link');
 
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 40) {
+        if (window.scrollY > 30) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-    });
+    }, { passive: true });
 
-    mobileToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        const icon = mobileToggle.querySelector('i');
-        if (navMenu.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-xmark');
-        } else {
-            icon.classList.remove('fa-xmark');
-            icon.classList.add('fa-bars');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
             const icon = mobileToggle.querySelector('i');
-            if (icon) {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
+            if (navMenu.classList.contains('active')) {
+                icon.className = 'fa-solid fa-xmark';
+            } else {
+                icon.className = 'fa-solid fa-bars';
             }
         });
-    });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                if (icon) icon.className = 'fa-solid fa-bars';
+            });
+        });
+    }
 }
 
 /* ----------------------------------------------------
-   3. Ambient Particle Background Canvas Animation
+   4. Background Subtle Ambient Particle Canvas
 ---------------------------------------------------- */
-function initCanvasAnimation() {
+function initAmbientBgCanvas() {
     const canvas = document.getElementById('bg-canvas');
     if (!canvas) return;
 
@@ -95,49 +111,44 @@ function initCanvasAnimation() {
     window.addEventListener('resize', () => {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
-    });
+    }, { passive: true });
 
     const particles = [];
-    const particleCount = Math.min(Math.floor(width / 25), 45);
+    const count = Math.min(Math.floor(width / 40), 30);
 
-    class Particle {
+    class Star {
         constructor() {
             this.reset();
         }
-
         reset() {
             this.x = Math.random() * width;
             this.y = Math.random() * height;
-            this.radius = Math.random() * 2 + 1;
-            this.vx = (Math.random() - 0.5) * 0.4;
-            this.vy = (Math.random() - 0.5) * 0.4;
-            this.alpha = Math.random() * 0.5 + 0.2;
+            this.radius = Math.random() * 1.5 + 0.5;
+            this.vx = (Math.random() - 0.5) * 0.2;
+            this.vy = (Math.random() - 0.5) * 0.2;
+            this.alpha = Math.random() * 0.35 + 0.1;
         }
-
         update() {
             this.x += this.vx;
             this.y += this.vy;
-
             if (this.x < 0 || this.x > width) this.vx *= -1;
             if (this.y < 0 || this.y > height) this.vy *= -1;
         }
-
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(99, 102, 241, ${this.alpha})`;
+            ctx.fillStyle = `rgba(168, 85, 247, ${this.alpha})`;
             ctx.fill();
         }
     }
 
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
+    for (let i = 0; i < count; i++) {
+        particles.push(new Star());
     }
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
 
-        // Draw connections
         for (let i = 0; i < particles.length; i++) {
             particles[i].update();
             particles[i].draw();
@@ -147,25 +158,105 @@ function initCanvasAnimation() {
                 const dy = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
-                if (dist < 140) {
+                if (dist < 110) {
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(99, 102, 241, ${0.15 * (1 - dist / 140)})`;
-                    ctx.lineWidth = 0.8;
+                    ctx.strokeStyle = `rgba(168, 85, 247, ${0.1 * (1 - dist / 110)})`;
+                    ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }
             }
         }
-
         requestAnimationFrame(animate);
     }
-
     animate();
 }
 
 /* ----------------------------------------------------
-   4. Project Category Filtering
+   5. Interactive Card Spotlight & 3D Tilt Engine
+---------------------------------------------------- */
+function initCardSpotlightAndTilt() {
+    const cards = document.querySelectorAll('.spotlight-card, .project-card, .skill-group-card, .hero-highlight-card, .channel-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Set CSS coordinates for radial spotlight glow
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+
+            // Apply 3D Perspective Tilt on Interactive Cards
+            if (
+                card.classList.contains('project-card') ||
+                card.classList.contains('skill-group-card') ||
+                card.classList.contains('hero-highlight-card') ||
+                card.classList.contains('channel-card')
+            ) {
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -5;
+                const rotateY = ((x - centerX) / centerX) * 5;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            if (
+                card.classList.contains('project-card') ||
+                card.classList.contains('skill-group-card') ||
+                card.classList.contains('hero-highlight-card') ||
+                card.classList.contains('channel-card')
+            ) {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+            }
+        });
+    });
+}
+
+/* ----------------------------------------------------
+   6. Technical Skills Live Search
+---------------------------------------------------- */
+function initSkillSearch() {
+    const searchInput = document.getElementById('skill-search-input');
+    const clearBtn = document.getElementById('clear-search-btn');
+    const skillPills = document.querySelectorAll('.skill-pill');
+
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.trim().toLowerCase();
+
+        if (clearBtn) {
+            clearBtn.style.display = query.length > 0 ? 'inline-block' : 'none';
+        }
+
+        skillPills.forEach(pill => {
+            const text = pill.textContent.toLowerCase();
+            if (query.length > 0 && text.includes(query)) {
+                pill.classList.add('highlight');
+            } else {
+                pill.classList.remove('highlight');
+            }
+        });
+    });
+
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            clearBtn.style.display = 'none';
+            skillPills.forEach(pill => pill.classList.remove('highlight'));
+            searchInput.focus();
+        });
+    }
+}
+
+/* ----------------------------------------------------
+   7. Project Category Filter Tabs
 ---------------------------------------------------- */
 function initProjectFilters() {
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -176,13 +267,19 @@ function initProjectFilters() {
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            const filterValue = btn.getAttribute('data-filter');
+            const filter = btn.getAttribute('data-filter');
 
             projectCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                if (filterValue === 'all' || category === filterValue) {
+                const categories = (card.getAttribute('data-category') || '').split(/\s+/);
+                if (filter === 'all' || categories.includes(filter)) {
                     card.style.display = 'flex';
-                    card.style.animation = 'fadeIn 0.4s ease forwards';
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.97)';
+                    setTimeout(() => {
+                        card.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 20);
                 } else {
                     card.style.display = 'none';
                 }
@@ -192,7 +289,7 @@ function initProjectFilters() {
 }
 
 /* ----------------------------------------------------
-   5. Project Modals Handler
+   8. Project Details Modals
 ---------------------------------------------------- */
 function initModals() {
     const openBtns = document.querySelectorAll('.open-modal');
@@ -234,64 +331,5 @@ function initModals() {
             modals.forEach(modal => modal.classList.remove('active'));
             document.body.style.overflow = 'auto';
         }
-    });
-}
-
-/* ----------------------------------------------------
-   6. Copy Email to Clipboard
----------------------------------------------------- */
-function initCopyAction() {
-    const copyBtn = document.getElementById('copy-email-btn');
-    if (!copyBtn) return;
-
-    copyBtn.addEventListener('click', () => {
-        const email = 'palakharinkhede1@gmail.com';
-        navigator.clipboard.writeText(email).then(() => {
-            const icon = copyBtn.querySelector('i');
-            icon.className = 'fa-solid fa-check';
-            icon.style.color = '#10b981';
-
-            setTimeout(() => {
-                icon.className = 'fa-regular fa-copy';
-                icon.style.color = '';
-            }, 2000);
-        }).catch(err => {
-            console.error('Copy failed', err);
-        });
-    });
-}
-
-/* ----------------------------------------------------
-   7. Contact Form Handler
----------------------------------------------------- */
-function initContactForm() {
-    const form = document.getElementById('contact-form');
-    if (!form) return;
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const nameInput = document.getElementById('name');
-        const emailInput = document.getElementById('email');
-        const messageInput = document.getElementById('message');
-        const submitBtn = form.querySelector('button[type="submit"]');
-
-        const name = nameInput ? nameInput.value : '';
-        const email = emailInput ? emailInput.value : '';
-        const message = messageInput ? messageInput.value : '';
-
-        const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
-        const body = encodeURIComponent(`Hi Palak,\n\nMy name is ${name} (${email}).\n\nMessage:\n${message}`);
-
-        submitBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Opening Mail Client...';
-        submitBtn.style.background = '#10b981';
-
-        setTimeout(() => {
-            window.location.href = `mailto:palakharinkhede1@gmail.com?subject=${subject}&body=${body}`;
-            form.reset();
-            setTimeout(() => {
-                submitBtn.innerHTML = '<i class="fa-solid fa-rocket"></i> Launch Message';
-                submitBtn.style.background = '';
-            }, 3000);
-        }, 600);
     });
 }
