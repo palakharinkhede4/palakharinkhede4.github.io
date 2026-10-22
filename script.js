@@ -16,13 +16,13 @@ function initTheme() {
         button.setAttribute('aria-pressed', String(light));
         button.title = `Switch to ${light ? 'dark' : 'light'} theme`;
     }
-    let saved = 'dark';
-    try { saved = localStorage.getItem('palak-portfolio-theme') || 'dark'; } catch { /* Storage is optional. */ }
+    let saved = 'light';
+    try { saved = localStorage.getItem('palak-portfolio-appearance') || 'light'; } catch { /* Storage is optional. */ }
     apply(saved);
     button.addEventListener('click', () => {
         const theme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
         apply(theme);
-        try { localStorage.setItem('palak-portfolio-theme', theme); } catch { /* The toggle still works. */ }
+        try { localStorage.setItem('palak-portfolio-appearance', theme); } catch { /* The toggle still works. */ }
     });
 }
 function initNavigation() {
@@ -36,7 +36,6 @@ function initNavigation() {
         menu.inert = mobile.matches && !open;
         button.setAttribute('aria-expanded', String(open));
         button.setAttribute('aria-label', `${open ? 'Close' : 'Open'} navigation menu`);
-        button.querySelector('i').className = `fa-solid fa-${open ? 'xmark' : 'bars'}`;
     }
     button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
     links.forEach(link => link.addEventListener('click', () => setOpen(false)));
