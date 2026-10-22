@@ -1,335 +1,129 @@
-/* ==========================================================================
-   PALAK HARINKHEDE - PORTFOLIO INTERACTIVITY SCRIPT (v2.2)
-   Interactive Spotlight Cards, 3D Tilt, Live Search, and Smooth Theme Toggle
-   ========================================================================== */
-
+/* Framework-free portfolio interactions. */
 document.addEventListener('DOMContentLoaded', () => {
-    initScrollProgress();
     initTheme();
-    initNavbar();
-    initAmbientBgCanvas();
-    initCardSpotlightAndTilt();
-    initSkillSearch();
+    initNavigation();
     initProjectFilters();
-    initModals();
+    initSkillSearch();
+    initScrollProgress();
 });
-
-/* ----------------------------------------------------
-   1. Scroll Progress Bar
----------------------------------------------------- */
-function initScrollProgress() {
-    const progressBar = document.getElementById('scroll-progress');
-    if (!progressBar) return;
-
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        progressBar.style.width = `${scrollPercent}%`;
-    }, { passive: true });
-}
-
-/* ----------------------------------------------------
-   2. Dark / Light Theme Handler
----------------------------------------------------- */
 function initTheme() {
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const savedTheme = localStorage.getItem('palak-portfolio-theme') || 'dark';
-
-    if (savedTheme === 'light') {
-        document.body.classList.remove('dark-theme');
-        document.body.classList.add('light-theme');
-    } else {
-        document.body.classList.remove('light-theme');
-        document.body.classList.add('dark-theme');
+    const button = document.getElementById('theme-toggle');
+    function apply(theme) {
+        const light = theme === 'light';
+        document.body.classList.toggle('light-theme', light);
+        document.body.classList.toggle('dark-theme', !light);
+        button.setAttribute('aria-label', `Switch to ${light ? 'dark' : 'light'} theme`);
+        button.setAttribute('aria-pressed', String(light));
+        button.title = `Switch to ${light ? 'dark' : 'light'} theme`;
     }
-
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            if (document.body.classList.contains('dark-theme')) {
-                document.body.classList.remove('dark-theme');
-                document.body.classList.add('light-theme');
-                localStorage.setItem('palak-portfolio-theme', 'light');
-            } else {
-                document.body.classList.remove('light-theme');
-                document.body.classList.add('dark-theme');
-                localStorage.setItem('palak-portfolio-theme', 'dark');
-            }
-        });
-    }
+    let saved = 'dark';
+    try { saved = localStorage.getItem('palak-portfolio-theme') || 'dark'; } catch { /* Storage is optional. */ }
+    apply(saved);
+    button.addEventListener('click', () => {
+        const theme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
+        apply(theme);
+        try { localStorage.setItem('palak-portfolio-theme', theme); } catch { /* The toggle still works. */ }
+    });
 }
-
-/* ----------------------------------------------------
-   3. Navbar & Mobile Menu Navigation
----------------------------------------------------- */
-function initNavbar() {
-    const navbar = document.getElementById('navbar');
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 30) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+function initNavigation() {
+    const header = document.getElementById('navbar');
+    const button = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('nav-menu');
+    const mobile = window.matchMedia('(max-width: 768px)');
+    const links = [...menu.querySelectorAll('.nav-link')];
+    function setOpen(open) {
+        menu.classList.toggle('active', open);
+        menu.inert = mobile.matches && !open;
+        button.setAttribute('aria-expanded', String(open));
+        button.setAttribute('aria-label', `${open ? 'Close' : 'Open'} navigation menu`);
+        button.querySelector('i').className = `fa-solid fa-${open ? 'xmark' : 'bars'}`;
+    }
+    button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
+    links.forEach(link => link.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('click', event => {
+        if (mobile.matches && !header.contains(event.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+            setOpen(false);
+            button.focus();
         }
-    }, { passive: true });
-
-    if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = mobileToggle.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.className = 'fa-solid fa-xmark';
-            } else {
-                icon.className = 'fa-solid fa-bars';
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                const icon = mobileToggle.querySelector('i');
-                if (icon) icon.className = 'fa-solid fa-bars';
+    });
+    mobile.addEventListener('change', () => setOpen(false));
+    setOpen(false);
+    const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 30);
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader();
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                links.forEach(link => {
+                    const active = link.hash === `#${entry.target.id}`;
+                    link.classList.toggle('active', active);
+                    if (active) link.setAttribute('aria-current', 'location');
+                    else link.removeAttribute('aria-current');
+                });
             });
-        });
+        }, { rootMargin: '-15% 0px -65% 0px' });
+        document.querySelectorAll('main section[id]').forEach(section => observer.observe(section));
     }
 }
-
-/* ----------------------------------------------------
-   4. Background Subtle Ambient Particle Canvas
----------------------------------------------------- */
-function initAmbientBgCanvas() {
-    const canvas = document.getElementById('bg-canvas');
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
-
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-    }, { passive: true });
-
-    const particles = [];
-    const count = Math.min(Math.floor(width / 40), 30);
-
-    class Star {
-        constructor() {
-            this.reset();
-        }
-        reset() {
-            this.x = Math.random() * width;
-            this.y = Math.random() * height;
-            this.radius = Math.random() * 1.5 + 0.5;
-            this.vx = (Math.random() - 0.5) * 0.2;
-            this.vy = (Math.random() - 0.5) * 0.2;
-            this.alpha = Math.random() * 0.35 + 0.1;
-        }
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            if (this.x < 0 || this.x > width) this.vx *= -1;
-            if (this.y < 0 || this.y > height) this.vy *= -1;
-        }
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(168, 85, 247, ${this.alpha})`;
-            ctx.fill();
-        }
-    }
-
-    for (let i = 0; i < count; i++) {
-        particles.push(new Star());
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, width, height);
-
-        for (let i = 0; i < particles.length; i++) {
-            particles[i].update();
-            particles[i].draw();
-
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-
-                if (dist < 110) {
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(168, 85, 247, ${0.1 * (1 - dist / 110)})`;
-                    ctx.lineWidth = 0.5;
-                    ctx.stroke();
-                }
-            }
-        }
-        requestAnimationFrame(animate);
-    }
-    animate();
-}
-
-/* ----------------------------------------------------
-   5. Interactive Card Spotlight & 3D Tilt Engine
----------------------------------------------------- */
-function initCardSpotlightAndTilt() {
-    const cards = document.querySelectorAll('.spotlight-card, .project-card, .skill-group-card, .hero-highlight-card, .channel-card');
-
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            // Set CSS coordinates for radial spotlight glow
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-
-            // Apply 3D Perspective Tilt on Interactive Cards
-            if (
-                card.classList.contains('project-card') ||
-                card.classList.contains('skill-group-card') ||
-                card.classList.contains('hero-highlight-card') ||
-                card.classList.contains('channel-card')
-            ) {
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -5;
-                const rotateY = ((x - centerX) / centerX) * 5;
-
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-            }
-        });
-
-        card.addEventListener('mouseleave', () => {
-            if (
-                card.classList.contains('project-card') ||
-                card.classList.contains('skill-group-card') ||
-                card.classList.contains('hero-highlight-card') ||
-                card.classList.contains('channel-card')
-            ) {
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-            }
-        });
-    });
-}
-
-/* ----------------------------------------------------
-   6. Technical Skills Live Search
----------------------------------------------------- */
-function initSkillSearch() {
-    const searchInput = document.getElementById('skill-search-input');
-    const clearBtn = document.getElementById('clear-search-btn');
-    const skillPills = document.querySelectorAll('.skill-pill');
-
-    if (!searchInput) return;
-
-    searchInput.addEventListener('input', () => {
-        const query = searchInput.value.trim().toLowerCase();
-
-        if (clearBtn) {
-            clearBtn.style.display = query.length > 0 ? 'inline-block' : 'none';
-        }
-
-        skillPills.forEach(pill => {
-            const text = pill.textContent.toLowerCase();
-            if (query.length > 0 && text.includes(query)) {
-                pill.classList.add('highlight');
-            } else {
-                pill.classList.remove('highlight');
-            }
-        });
-    });
-
-    if (clearBtn) {
-        clearBtn.addEventListener('click', () => {
-            searchInput.value = '';
-            clearBtn.style.display = 'none';
-            skillPills.forEach(pill => pill.classList.remove('highlight'));
-            searchInput.focus();
-        });
-    }
-}
-
-/* ----------------------------------------------------
-   7. Project Category Filter Tabs
----------------------------------------------------- */
 function initProjectFilters() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filter = btn.getAttribute('data-filter');
-
-            projectCards.forEach(card => {
-                const categories = (card.getAttribute('data-category') || '').split(/\s+/);
-                if (filter === 'all' || categories.includes(filter)) {
-                    card.style.display = 'flex';
-                    card.style.opacity = '0';
-                    card.style.transform = 'scale(0.97)';
-                    setTimeout(() => {
-                        card.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 20);
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+    const buttons = [...document.querySelectorAll('.filter-btn')];
+    const cards = [...document.querySelectorAll('.project-card')];
+    const status = document.getElementById('project-count');
+    buttons.forEach(button => button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        buttons.forEach(item => {
+            const active = item === button;
+            item.classList.toggle('active', active);
+            item.setAttribute('aria-pressed', String(active));
         });
-    });
+        let count = 0;
+        cards.forEach(card => {
+            const show = filter === 'all' || card.dataset.category.split(/\s+/).includes(filter);
+            card.hidden = !show;
+            if (show) count++;
+        });
+        status.textContent = filter === 'all' ? `Showing all ${count} projects` : `${count} projects · ${button.textContent.trim()}`;
+    }));
 }
-
-/* ----------------------------------------------------
-   8. Project Details Modals
----------------------------------------------------- */
-function initModals() {
-    const openBtns = document.querySelectorAll('.open-modal');
-    const closeBtns = document.querySelectorAll('.modal-close');
-    const modals = document.querySelectorAll('.modal');
-
-    openBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const targetId = btn.getAttribute('data-target');
-            const targetModal = document.getElementById(targetId);
-            if (targetModal) {
-                targetModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
+function initSkillSearch() {
+    const input = document.getElementById('skill-search-input');
+    const clear = document.getElementById('clear-search-btn');
+    const groups = [...document.querySelectorAll('.skill-group-card')];
+    const status = document.getElementById('skill-search-status');
+    const empty = document.getElementById('skill-empty');
+    function search() {
+        const query = input.value.trim().toLowerCase();
+        let matches = 0;
+        groups.forEach(group => {
+            const headingMatches = group.querySelector('h3').textContent.toLowerCase().includes(query);
+            let groupMatches = 0;
+            group.querySelectorAll('.skill-pill').forEach(pill => {
+                const show = !query || headingMatches || pill.textContent.toLowerCase().includes(query);
+                pill.hidden = !show;
+                pill.classList.toggle('highlight', !!query && show);
+                if (show) groupMatches++;
+            });
+            group.hidden = groupMatches === 0;
+            matches += groupMatches;
         });
-    });
-
-    closeBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const modal = btn.closest('.modal');
-            if (modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-    });
-
-    modals.forEach(modal => {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            modals.forEach(modal => modal.classList.remove('active'));
-            document.body.style.overflow = 'auto';
-        }
-    });
+        clear.hidden = !query;
+        empty.hidden = matches > 0;
+        status.textContent = query ? `${matches} matching ${matches === 1 ? 'skill' : 'skills'}` : `Explore ${groups.length} skill areas`;
+    }
+    input.addEventListener('input', search);
+    clear.addEventListener('click', () => { input.value = ''; search(); input.focus(); });
+}
+function initScrollProgress() {
+    const bar = document.getElementById('scroll-progress');
+    const update = () => {
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = `${total > 0 ? window.scrollY / total * 100 : 0}%`;
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
 }

@@ -1578,3 +1578,84 @@ body.light-theme .icon-dark { display: inline-block; }
         text-align: center;
     }
 }
+/* Content and accessibility refinements. */
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.skip-link { position: fixed; top: -80px; left: 16px; z-index: 20000; background: #fff; color: #1e1b4b; padding: 12px 20px; border-radius: 8px; }
+.skip-link:focus { top: 12px; }
+:focus-visible { outline: 3px solid var(--cyan-main); outline-offset: 5px; }
+body { background-image: radial-gradient(ellipse at 80% 5%, rgba(124, 58, 237, .08), transparent 35%); }
+#bg-canvas { display: none; }
+.eyebrow { color: var(--cyan-main); font-family: var(--font-mono); font-size: .75rem; letter-spacing: .17em; margin-bottom: 14px; }
+.hero-role { max-width: 700px; text-wrap: balance; line-height: 1.45; }
+.hero-tagline { max-width: 650px; }
+.hero-title { letter-spacing: -.045em; }
+.hero-highlight-card { box-shadow: var(--shadow-card); }
+.hero-key-badges { gap: 8px; }
+.results-count { color: var(--text-muted); font-size: .84rem; margin: 0 0 24px; text-align: center; }
+.project-card { min-width: 0; }
+.project-header { gap: 12px; }
+.project-meta-badge { text-align: right; font-size: .65rem; }
+.project-desc { flex-grow: 0; margin-bottom: 14px; }
+.project-points { color: var(--text-muted); font-size: .83rem; line-height: 1.7; padding-left: 17px; margin-bottom: 22px; }
+.project-points li + li { margin-top: 6px; }
+.project-card .tech-pills { margin-top: auto; padding-top: 8px; }
+.project-actions { flex-wrap: wrap; }
+.project-actions .btn { flex: 1; white-space: nowrap; }
+.project-card:hover { border-color: var(--border-card-hover); }
+.experience-streams { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; margin: 26px 0; }
+.experience-streams h4 { font-size: 1rem; margin-bottom: 10px; color: var(--text-main); }
+.experience-streams p { font-size: .92rem; line-height: 1.85; color: var(--text-muted); }
+.skill-search-container { max-width: 560px; margin: 0 auto 16px; }
+#clear-search-btn { background: transparent; color: var(--text-main); border: 0; cursor: pointer; font-size: 1.4rem; padding: 0 4px; }
+.skill-group-header > i { color: var(--cyan-main); font-size: 1.2rem; flex-shrink: 0; }
+.empty-state { color: var(--text-muted); text-align: center; padding: 28px; border: 1px solid var(--border-card); border-radius: 12px; }
+.certification-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.cert-card { padding: 26px; }
+.cert-card > i { color: var(--cyan-main); font-size: 1.4rem; margin-bottom: 18px; }
+.cert-card h3 { font-size: 1rem; line-height: 1.5; margin-bottom: 10px; }
+.cert-card p { color: var(--text-muted); font-size: .83rem; }
+.footer-right { display: flex; gap: 24px; align-items: center; }
+.footer-resume { color: var(--cyan-main); font-size: .83rem; text-decoration: none; }
+body.light-theme .eyebrow, body.light-theme .footer-resume, body.light-theme .skill-group-header > i, body.light-theme .cert-card > i { color: #6d28d9; }
+body.light-theme .item-title, body.light-theme .project-meta-badge { color: #6d28d9; }
+body.light-theme .learn-more-link { color: #5b21b6; }
+body.light-theme .skill-pill:hover { color: #4c1d95; }
+body.light-theme .hero-status-badge, body.light-theme .hero-status-badge span { color: #4c1d95; }
+@media (max-width: 1100px) { .nav-menu { gap: 5px; } .nav-link { padding-inline: 10px; font-size: .8rem; } .certification-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 768px) {
+    .projects-grid, .skills-grid-resume, .edu-grid { grid-template-columns: minmax(0, 1fr); }
+    .nav-menu:not(.active) { visibility: hidden; }
+    body.light-theme .nav-menu { background: rgba(248, 250, 252, .98); }
+    .experience-streams { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+    .project-card-inner { padding: 24px; }
+    .hero-key-badges { justify-content: flex-start; }
+    .hero-title { font-size: clamp(2.35rem, 10vw, 3.6rem); }
+    .project-meta-badge { max-width: 75%; }
+    .channel-value { overflow-wrap: anywhere; }
+    .channel-card { min-width: 0; }
+    .channel-details { min-width: 0; }
+    .edu-card-top { flex-wrap: wrap; gap: 10px; }
+    .footer-right { flex-wrap: wrap; justify-content: center; }
+}
+@media (max-width: 480px) {
+    .certification-grid { grid-template-columns: minmax(0, 1fr); }
+    .hero-status-badge { flex-wrap: wrap; justify-content: flex-start; font-size: .68rem; }
+    .hero-role { font-size: 1.12rem; }
+    .hero-cta-group .btn { width: 100%; justify-content: center; }
+    .about-card { padding: 24px; }
+    .timeline-card { padding: 24px; }
+    .contact-card-intro { padding: 24px; }
+    .channel-action span { display: none; }
+    .channel-value { font-size: .8rem; }
+    .section-title { font-size: 2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+/* Keep both themes readable, including compact phone layouts. */
+body.light-theme { --cyan-main: #0369a1; --purple-main: #7c3aed; }
+body.light-theme .badge-chip { background: rgba(124, 58, 237, .05); border-color: rgba(124, 58, 237, .16); }
+.skill-search-box { background: var(--bg-card); border: 1px solid var(--border-card); }
+.skill-search-box:focus-within { outline: 3px solid var(--cyan-main); outline-offset: 3px; }
+@media (max-width: 480px) { .badge-chip { font-size: .7rem; padding: 6px 9px; } }
